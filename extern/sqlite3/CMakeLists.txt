@@ -10,6 +10,8 @@ target_compile_definitions(sqlite3 PUBLIC SQLITE_THREADSAFE=1)
 file(READ ${CMAKE_CURRENT_SOURCE_DIR}/sqlite3.h SQLITE3_HEADER_CONTENTS)
 file(READ ${CMAKE_CURRENT_SOURCE_DIR}/sqlite3.c SQLITE3_SOURCE_CONTENTS)
 
+target_compile_options(sqlite3 PRIVATE -fno-exceptions -matomics -mbulk-memory -pthread)
+
 if (PRIVATE_CESIUM_SQLITE)
     string(REPLACE sqlite3 cesium_sqlite3 SQLITE3_HEADER_CONTENTS "${SQLITE3_HEADER_CONTENTS}")
     string(REPLACE sqlite3 cesium_sqlite3 SQLITE3_SOURCE_CONTENTS "${SQLITE3_SOURCE_CONTENTS}")

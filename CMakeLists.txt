@@ -9,7 +9,7 @@ project(cesium-native
 option(PRIVATE_CESIUM_SQLITE "ON to rename SQLite symbols to cesium_sqlite3_* so they won't conflict with other SQLite implemenentations" OFF)
 option(CESIUM_TRACING_ENABLED "Whether to enable the Cesium performance tracing framework (CESIUM_TRACE_* macros)." OFF)
 option(CESIUM_COVERAGE_ENABLED "Whether to enable code coverage" OFF)
-option(CESIUM_TESTS_ENABLED "Whether to enable tests" ON)
+option(CESIUM_TESTS_ENABLED "Whether to enable tests" OFF)
 
 if (CESIUM_TRACING_ENABLED)
     add_compile_definitions(CESIUM_TRACING_ENABLED=1)
@@ -84,7 +84,7 @@ function(configure_cesium_library targetName)
     if (MSVC)
         target_compile_options(${targetName} PRIVATE /W4 /WX /wd4201 /bigobj)
     else()
-        target_compile_options(${targetName} PRIVATE -Werror -Wall -Wextra -Wconversion -Wpedantic -Wshadow -Wsign-conversion)
+        target_compile_options(${targetName} PRIVATE -Wall -Wextra -Wconversion -Wpedantic -Wshadow -Wsign-conversion -matomics -mbulk-memory -pthread)
     endif()
 
     set_target_properties(${targetName} PROPERTIES

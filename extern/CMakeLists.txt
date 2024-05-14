@@ -101,6 +101,8 @@ target_include_directories(s2geometry SYSTEM PUBLIC s2geometry/src)
 if (MSVC)
   target_compile_options(s2geometry PRIVATE "/J" "/wd4127" "/wd4996")
   target_compile_definitions(s2geometry PRIVATE NOMINMAX _USE_MATH_DEFINES)
+else()
+  target_compile_options(s2geometry PRIVATE -matomics -mbulk-memory)
 endif()
 
 set(HTTPLIB_USE_BROTLI_IF_AVAILABLE OFF CACHE BOOL "Don't use Brotli")
