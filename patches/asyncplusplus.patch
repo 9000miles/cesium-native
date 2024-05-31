@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index bb2de4d..f65ebd7 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -66,7 +66,7 @@ add_library(Async++ ${PROJECT_SOURCE_DIR}/include/async++.h ${ASYNCXX_INCLUDE} $
+ # Async++ only depends on the C++11 standard libraries, but some implementations
+ # require the -pthread compiler flag to enable threading functionality.
+ if (NOT MSVC)
+-	target_compile_options(Async++ PRIVATE -std=c++11)
++	target_compile_options(Async++ PRIVATE -std=c++11 -matomics -mbulk-memory -pthread)
+ endif()
+ if (APPLE)
+ 	# Use libc++ on Mac because the shipped libstdc++ version is ancient

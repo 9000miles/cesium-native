@@ -1,0 +1,21 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0e3782d..0a0c675 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -2,7 +2,7 @@
+ 
+ # This CMake script has some complications to consider:
+ #
+-#   -DARCH=32          Architecture bits to use non-MSVC targets 
++#   -DARCH=32          Architecture bits to use non-MSVC targets
+ #   -DARCH=64          (GCC/Clang/etc) that take the -m32 and -m64 flags.
+ #                      (For MSVC targets, select the correct -G option.)
+ #
+@@ -57,6 +57,7 @@ if (${LINKAGE} MATCHES "static")
+   add_executable (c-example-${LINKAGE}   ../example.c  )
+   add_executable (cpp-example-${LINKAGE} ../example.cpp)
+   add_library (csprng STATIC ../source/csprng.c)
++  target_compile_options(csprng PRIVATE -matomics -mbulk-memory -pthread)
+ endif (${LINKAGE} MATCHES "static")
+ 
+ if (NOT ${LINKAGE} MATCHES "direct")

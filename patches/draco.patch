@@ -1,0 +1,26 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e7b8f15..5ef9ae8 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -622,7 +622,7 @@ endif()
+ #
+ # Draco targets.
+ #
+-if(EMSCRIPTEN AND DRACO_JS_GLUE)
++if(EMSCRIPTEN AND DRACO_JS_GLUE AND OFF)
+   # Draco decoder and encoder "executable" targets in various flavors for
+   # Emscripten.
+ 
+diff --git a/cmake/draco_build_definitions.cmake b/cmake/draco_build_definitions.cmake
+index 4c7b3f9..4cd7005 100644
+--- a/cmake/draco_build_definitions.cmake
++++ b/cmake/draco_build_definitions.cmake
+@@ -41,7 +41,7 @@ macro(draco_set_build_definitions)
+     if(MSVC)
+       list(APPEND draco_msvc_cxx_flags "/Ox")
+     else()
+-      list(APPEND draco_base_cxx_flags "-O3")
++      list(APPEND draco_base_cxx_flags "-O3 -pthread")
+     endif()
+   endif()
+ 

@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3f65107..5c7e508 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -48,7 +48,7 @@ if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang$" OR CMAKE_COMPILER_IS_GNUCXX)
+             set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -fsanitize=undefined")
+         endif()
+     endif()
+-    add_compile_options("-pipe" "-Wall" "-Wextra" "-Wconversion" "-Wpedantic")
++    add_compile_options("-pipe" "-Wall" "-Wextra" "-Wconversion" "-Wpedantic" "-pthread")
+     if (EARCUT_WARNING_IS_ERROR)
+         add_compile_options("-Werror")
+     endif()

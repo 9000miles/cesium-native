@@ -1,0 +1,15 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 21577e50..1e069d8c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -240,8 +240,9 @@ foreach(
+ endforeach()
+ 
+ if(SPDLOG_NO_EXCEPTIONS AND NOT MSVC)
+-    target_compile_options(spdlog PRIVATE -fno-exceptions)
++    target_compile_options(spdlog PRIVATE -fno-exceptions -matomics -mbulk-memory -pthread)
+ endif()
++target_compile_options(spdlog PRIVATE -matomics -mbulk-memory -pthread)
+ 
+ # ---------------------------------------------------------------------------------------
+ # Build binaries

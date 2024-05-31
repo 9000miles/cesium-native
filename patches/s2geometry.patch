@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5ecd280..13f2a9f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -13,6 +13,8 @@ if (APPLE)
+     set(CMAKE_MACOSX_RPATH TRUE)
+ endif()
+ 
++target_compile_options(s2-geometry PRIVATE -std=c++11 -matomics -mbulk-memory -pthread)
++
+ set(CMAKE_CXX_STANDARD 11)
+ set(CMAKE_CXX_STANDARD_REQUIRED ON)
+ # No compiler-specific extensions, i.e. -std=c++11, not -std=gnu++11.

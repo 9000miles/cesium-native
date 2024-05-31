@@ -1,0 +1,15 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9b80f71..7ec8507 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -331,8 +331,8 @@ if(URIPARSER_WARNINGS_AS_ERRORS)
+     endif()
+ endif()
+ 
+-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${URIPARSER_EXTRA_COMPILE_FLAGS}")
+-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${URIPARSER_EXTRA_COMPILE_FLAGS}")
++set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${URIPARSER_EXTRA_COMPILE_FLAGS} -pthread")
++set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${URIPARSER_EXTRA_COMPILE_FLAGS} -pthread")
+ 
+ #
+ # Doxygen API documentation

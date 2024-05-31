@@ -1,0 +1,31 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8c83f5b3..35fe4df5 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -673,7 +673,7 @@ if(WITH_TURBOJPEG)
+     endif()
+     add_library(turbojpeg SHARED ${TURBOJPEG_SOURCES})
+     set_property(TARGET turbojpeg PROPERTY COMPILE_FLAGS
+-      "-DBMP_SUPPORTED -DPPM_SUPPORTED")
++      "-DBMP_SUPPORTED -DPPM_SUPPORTED -matomics -mbulk-memory -pthread")
+     if(WIN32)
+       set_target_properties(turbojpeg PROPERTIES DEFINE_SYMBOL DLLDEFINE)
+     endif()
+@@ -712,7 +712,7 @@ if(WITH_TURBOJPEG)
+       ${SIMD_OBJS} turbojpeg.c transupp.c jdatadst-tj.c jdatasrc-tj.c rdbmp.c
+       rdppm.c wrbmp.c wrppm.c)
+     set_property(TARGET turbojpeg-static PROPERTY COMPILE_FLAGS
+-      "-DBMP_SUPPORTED -DPPM_SUPPORTED")
++      "-DBMP_SUPPORTED -DPPM_SUPPORTED -matomics -mbulk-memory -pthread")
+     #if(NOT MSVC)
+     set_target_properties(turbojpeg-static PROPERTIES OUTPUT_NAME turbojpeg)
+     #endif()
+@@ -733,7 +733,7 @@ if(WIN32)
+   set(USE_SETMODE "-DUSE_SETMODE")
+ endif()
+ if(WITH_12BIT)
+-  set(COMPILE_FLAGS "-DGIF_SUPPORTED -DPPM_SUPPORTED ${USE_SETMODE}")
++  set(COMPILE_FLAGS "-DGIF_SUPPORTED -DPPM_SUPPORTED -matomics -mbulk-memory -pthread ${USE_SETMODE}")
+ else()
+   set(COMPILE_FLAGS "-DBMP_SUPPORTED -DGIF_SUPPORTED -DPPM_SUPPORTED -DTARGA_SUPPORTED ${USE_SETMODE}")
+   set(CJPEG_BMP_SOURCES rdbmp.c rdtarga.c)
