@@ -1,8 +1,11 @@
 PROJECT(MikkTSpace)
 
 #CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -s MEMORY64=1")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -s MEMORY64=1")
 
 INCLUDE_DIRECTORIES(inc)
 ADD_LIBRARY(MikkTSpace STATIC src/mikktspace.c inc/mikktspace.h)
+target_compile_options(MikkTSpace PRIVATE -matomics -mbulk-memory -pthread -s MEMORY64=1)
 SET_TARGET_PROPERTIES(MikkTSpace PROPERTIES POSITION_INDEPENDENT_CODE TRUE)
 

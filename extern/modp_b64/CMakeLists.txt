@@ -5,3 +5,5 @@ target_include_directories(
     SYSTEM PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}
 )
+
+target_compile_options(modp_b64 PRIVATE -std=c++11 -matomics -mbulk-memory -pthread -s MEMORY64=1)

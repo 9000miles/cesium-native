@@ -215,9 +215,9 @@ else()
     # add any gcc flags
 endif()
 
-set( CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${WARNING_FLAGS} ${MSVC_FLAGS} -D_REENTRANT -matomics -mbulk-memory")
-set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${WARNING_FLAGS} ${MSVC_FLAGS} -D_REENTRANT -matomics -mbulk-memory")
-set( CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${MSVC_LD_FLAGS} -matomics -mbulk-memory")
+set( CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${WARNING_FLAGS} ${MSVC_FLAGS} -D_REENTRANT -matomics -mbulk-memory -s MEMORY64=1")
+set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${WARNING_FLAGS} ${MSVC_FLAGS} -D_REENTRANT -matomics -mbulk-memory -s MEMORY64=1")
+set( CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${MSVC_LD_FLAGS} -matomics -mbulk-memory -s MEMORY64=1")
 
 
 #------------------------------------------------------------------------
