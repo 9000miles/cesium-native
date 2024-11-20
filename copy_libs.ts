@@ -21,16 +21,17 @@ let libs = [
   "Build/extern/libcsprng.a",
   "Build/extern/draco/libdraco.a",
   "Build/extern/KTX-Software/libktx_read.a",
-  "extern/mikktspace/build/libMikkTSpace.a",
   "Build/extern/modp_b64/libmodp_b64.a",
   "Build/extern/libs2geometry.a",
   "Build/extern/spdlog/libspdlog.a",
   "Build/extern/sqlite3/libsqlite3.a",
-  "extern/tidy/tidy-html5-5.9.14-next/build/libtidy.a",
   "Build/extern/libtinyxml2.a",
   "Build/extern/libjpeg-turbo/libturbojpeg.a",
   "Build/extern/uriparser/liburiparser.a",
   "Build/extern/libwebp/libwebpdecoder.a",
+
+  "extern/mikktspace/build/libMikkTSpace.a",
+  "extern/tidy/tidy-html5-5.9.14-next/build/libtidy.a",
 ]
 
 // libs = [
@@ -40,7 +41,7 @@ let libs = [
 
 const script = process.argv[1]
 
-const destDir = "E:\\UE\\4.27\\Html5Project_New\\Plugins\\CesiumForUnreal\\Source\\ThirdParty\\lib\\HTML5"
+const destDir = "E:\\UE\\4.27\\H5_427\\Plugins\\CesiumForUnreal\\Source\\ThirdParty\\lib\\HTML5"
 const dir = path.dirname(script)
 for (const lib of libs) {
   const src = path.join(dir, lib);
